@@ -103,15 +103,68 @@
               <i class="material-icons text-3xl"> keyboard_arrow_right </i>
             </button>
           </div>
-          <div>
-            <button class="bg-light rounded-full p-1 flex items-center">
+          <div class="relative">
+            <button
+              @click="showDropdown = true"
+              class="bg-light rounded-full p-1 px-2 flex items-center"
+            >
               <img
                 class="rounded-full h-6 w-6"
                 src="./assets/avater.jpg"
                 alt="avater"
               />
-              <p class="text-white font-semibold text-xs">十月之水</p>
+              <p class="text-white font-semibold text-xs mr-1">十月之水</p>
+              <i
+                v-if="showDropdown === false"
+                class="material-icons text-white"
+              >
+                arrow_drop_down
+              </i>
+              <i v-if="showDropdown === true" class="material-icons text-white">
+                arrow_drop_up
+              </i>
             </button>
+            <div
+              v-if="showDropdown === true"
+              class="absolute bg-light w-full rounded mt-1"
+            >
+              <button
+                @click="showDropdown = false"
+                class="w-full text-sm py-2 text-lightest hover:text-white opacity-75 hover:opacity-100"
+              >
+                账户
+              </button>
+              <button
+                @click="showDropdown = false"
+                class="w-full text-sm py-2 text-lightest hover:text-white opacity-75 hover:opacity-100"
+              >
+                个人资料
+              </button>
+              <button
+                @click="showDropdown = false"
+                class="w-full text-sm py-2 text-lightest hover:text-white opacity-75 hover:opacity-100"
+              >
+                支持
+              </button>
+              <button
+                @click="showDropdown = false"
+                class="w-full text-sm py-2 text-lightest hover:text-white opacity-75 hover:opacity-100"
+              >
+                设置
+              </button>
+              <button
+                @click="showDropdown = false"
+                class="w-full text-sm py-2 text-lightest hover:text-white opacity-75 hover:opacity-100"
+              >
+                下载
+              </button>
+              <button
+                @click="showDropdown = false"
+                class="w-full text-sm py-2 text-lightest hover:text-white opacity-75 hover:opacity-100"
+              >
+                退出
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -133,6 +186,7 @@ export default {
       ],
       setID: "home",
       albums: [{ name: "我的歌单" }, { name: "生命之光" }],
+      showDropdown: false,
     };
   },
   components: {},
