@@ -15,11 +15,11 @@
             v-for="page in pages"
             :key="page.name"
             @click="setID = page.id"
-            :class="`w-full text-xs font-semibold rounded px-3 py-2 flex items-center justify-start ${
+            :class="`w-full text-sm font-semibold rounded px-3 py-2 flex items-center justify-start ${
               setID === page.id ? 'bg-light text-white' : 'text-lightest'
             }`"
           >
-            <i class="material-icons">{{ page.icon }}</i>
+            <i class="material-icons mr-3">{{ page.icon }}</i>
             <p>{{ page.name }}</p>
           </button>
         </div>
@@ -41,9 +41,9 @@ export default {
   data: function () {
     return {
       pages: [
-        { id: "home", name: "Home", icon: "home" },
-        { id: "search", name: "Search", icon: "search" },
-        { id: "library", name: "Your Library", icon: "bar_chart" },
+        { id: "home", name: "主页", icon: "home" },
+        { id: "search", name: "搜索", icon: "search" },
+        { id: "library", name: "资料库", icon: "bar_chart" },
       ],
       setID: "home",
     };
