@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-drak h-screen">
+  <div class="bg-dark h-screen">
     <div class="flex" style="height: 88vh">
       <!-- side nav -->
       <div class="w-56 bg-black h-full flex-none">
@@ -298,7 +298,7 @@
     </div>
     <!-- play bar -->
     <div
-      class="w-full flex items-center justify-between px-3 bg-light"
+      class="border-t-2 border-dark w-full flex items-center justify-between px-3 bg-light"
       style="height: 12vh"
     >
       <div class="flex items-center">
@@ -315,7 +315,7 @@
           picture_in_picture_alt</i
         >
       </div>
-      <div class="flex flex-col justify-center w-1/3 items-center">
+      <div class="flex flex-col justify-center w-2/4 items-center">
         <div class="flex items-center">
           <button class="mx-5 text-lightest hover:text-white">
             <i class="material-icons text-lg">shuffle</i>
@@ -324,9 +324,12 @@
             <i class="material-icons text-lg">skip_previous</i>
           </button>
           <button
+            @click="playSong()"
             class="rounded-full h-10 w-10 flex items-center mx-5 justify-center text-white hover:text-white"
           >
-            <i class="material-icons text-2xl">play_circle</i>
+            <i v-if="pause === false" class="material-icons text-2xl"
+              >play_circle</i
+            ><i v-if="pause === true" class="material-icons text-2xl">pause</i>
           </button>
           <button class="text-lightest hover:text-white">
             <i class="material-icons text-lg">skip_next</i>
@@ -335,11 +338,16 @@
             <i class="material-icons text-lg">repeat</i>
           </button>
         </div>
-        <div class="w-full">
-          <div class="w-full h-1 bg-lightest rounded-full mt-4"></div>
+        <div class="w-3/4 flex items-center mt-3">
+          <p class="text-xs text-lightest mr-1">0:28</p>
+          <div class="w-full h-1 bg-dark rounded-full flex items-center">
+            <div class="h-1 rounded-full bg-green" style="width: 18%"></div>
+            <div class="h-3 w-3 bg-white rounded-full shadow"></div>
+          </div>
+          <p class="text-xs text-lightest mr-1">2:40</p>
         </div>
       </div>
-      <div class="flex items-center">
+      <div class="flex items-center w-1/4 justify-end">
         <i class="mx-2 material-icons text-xl text-lightest">playlist_play</i>
         <i class="mx-2 material-icons text-xl text-lightest">cast</i>
         <i class="mx-2 material-icons text-xl text-lightest">volume_up</i>
@@ -370,6 +378,8 @@ import cus2 from "./assets/cus2.jpg";
 import cus3 from "./assets/cus3.jpg";
 import cus4 from "./assets/cus4.jpg";
 import cus5 from "./assets/cus5.jpg";
+
+import song from "./assets/aShortStory.mp3";
 
 export default {
   name: "App",
@@ -469,7 +479,17 @@ export default {
             "My Little Airport 嘅歌一直帶大家遊走香港，每張專輯盛載住呢個城市嘅變遷...",
         },
       ],
+      pause: false,
     };
+  },
+  methods: {
+    playSong() {
+      if (!this.pause) {
+        let audio = new Audio(song);
+        audio.play();
+        this.pause = this.pause === true ? false : true;
+      }
+    },
   },
   components: {},
 };
