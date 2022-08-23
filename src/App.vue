@@ -138,30 +138,6 @@
                 @click="showDropdown = false"
                 class="w-full text-sm py-2 text-lightest hover:text-white opacity-75 hover:opacity-100"
               >
-                个人资料
-              </button>
-              <button
-                @click="showDropdown = false"
-                class="w-full text-sm py-2 text-lightest hover:text-white opacity-75 hover:opacity-100"
-              >
-                支持
-              </button>
-              <button
-                @click="showDropdown = false"
-                class="w-full text-sm py-2 text-lightest hover:text-white opacity-75 hover:opacity-100"
-              >
-                设置
-              </button>
-              <button
-                @click="showDropdown = false"
-                class="w-full text-sm py-2 text-lightest hover:text-white opacity-75 hover:opacity-100"
-              >
-                下载
-              </button>
-              <button
-                @click="showDropdown = false"
-                class="w-full text-sm py-2 text-lightest hover:text-white opacity-75 hover:opacity-100"
-              >
                 退出
               </button>
             </div>
@@ -322,13 +298,52 @@
     </div>
     <!-- play bar -->
     <div
-      class="w-full flex items-center justify-between bg-light"
+      class="w-full flex items-center justify-between px-3 bg-light"
       style="height: 12vh"
     >
       <div class="flex items-center">
         <div>
-          <h1>一个短篇 A Short Story</h1>
+          <h1 class="text-sm text-white tracking- hover:underline">
+            一个短篇 A Short Story
+          </h1>
+          <h2 class="text-xs text-lightest tracking-wide hover:underline">
+            相见恨晚
+          </h2>
         </div>
+        <i class="material-icons text-xl text-green mx-4">favorite</i>
+        <i class="material-icons text-xl text-lightest">
+          picture_in_picture_alt</i
+        >
+      </div>
+      <div class="flex flex-col justify-center w-1/3 items-center">
+        <div class="flex items-center">
+          <button class="mx-5 text-lightest hover:text-white">
+            <i class="material-icons text-lg">shuffle</i>
+          </button>
+          <button class="text-lightest hover:text-white">
+            <i class="material-icons text-lg">skip_previous</i>
+          </button>
+          <button
+            class="rounded-full h-10 w-10 flex items-center mx-5 justify-center text-white hover:text-white"
+          >
+            <i class="material-icons text-2xl">play_circle</i>
+          </button>
+          <button class="text-lightest hover:text-white">
+            <i class="material-icons text-lg">skip_next</i>
+          </button>
+          <button class="mx-5 text-lightest hover:text-white">
+            <i class="material-icons text-lg">repeat</i>
+          </button>
+        </div>
+        <div class="w-full">
+          <div class="w-full h-1 bg-lightest rounded-full mt-4"></div>
+        </div>
+      </div>
+      <div class="flex items-center">
+        <i class="mx-2 material-icons text-xl text-lightest">playlist_play</i>
+        <i class="mx-2 material-icons text-xl text-lightest">cast</i>
+        <i class="mx-2 material-icons text-xl text-lightest">volume_up</i>
+        <div class="w-20 ml-1 bg-lightest rounded-full h-1"></div>
       </div>
     </div>
   </div>
