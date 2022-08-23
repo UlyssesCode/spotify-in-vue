@@ -28,7 +28,7 @@
             Playlists
           </h1>
           <button
-            class="flex items-center justify-start opacity-75 hover:opacity-100 mb-2"
+            class="transition duration-400 flex items-center justify-start opacity-75 hover:opacity-100 mb-2"
           >
             <img
               src="./assets/addNew.png"
@@ -42,7 +42,7 @@
             </p>
           </button>
           <button
-            class="flex items-center justify-start opacity-75 hover:opacity-100"
+            class="transition duration-400 flex items-center justify-start opacity-75 hover:opacity-100"
           >
             <img
               src="./assets/favorites.png"
@@ -72,7 +72,7 @@
                   arrow_circle_down
                 </span></i
               >
-              <p class="text-sm font-semibold">Install App</p>
+              <p class="text-sm font-semibold">安装应用</p>
             </button>
           </div>
         </div>
@@ -90,10 +90,10 @@
         </div>
       </div>
       <!-- main content -->
-      <div class="w-full h-full relative">
+      <div class="w-full h-full relative overflow-y-scroll">
         <!-- header -->
         <div
-          class="v-full sticky top-0 py-4 px-6 flex items-center justify-between"
+          class="v-full sticky top-0 py-4 px-6 flex items-center justify-between bg-black"
         >
           <div class="flex items-center">
             <button class="rounded-full bg-black w-9 h-9 text-white mr-3">
@@ -167,6 +167,81 @@
             </div>
           </div>
         </div>
+        <!-- cards -->
+        <div>
+          <div class="px-6 py-3 flex justify-between items-center">
+            <h1
+              class="pl-2 text-2xl font-semibold text-white tracking-wider hover:underline"
+            >
+              最近播放
+            </h1>
+            <h2
+              class="pr-8 pt-4 text-xs text-lightest tracking-wider hover:underline mb-3"
+            >
+              查看全部
+            </h2>
+          </div>
+          <div class="w-full flex flex-wrap">
+            <div
+              v-for="recent in recents"
+              :key="recent.src"
+              class="p-2 w-48 pl-7"
+            >
+              <div class="bg-light w-full h-auto p-5 rounded-lg shadow-md">
+                <img
+                  :src="`${recent.src}`"
+                  :alt="`${recent.title}-cover`"
+                  class="h-auto w-full shadow mb-2"
+                />
+                <h1
+                  class="w-full inline-block whitespace-nowrap truncate ... text-sm font-semibold text-white tracking-wide"
+                  :title="recent.title"
+                >
+                  {{ recent.title }}
+                </h1>
+                <h2 class="pb-4 text-xs text-lightest tracking-wide">
+                  {{ recent.artist }}
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="px-6 py-3 flex justify-between items-center">
+            <h1
+              class="pl-2 text-2xl font-semibold text-white tracking-wider hover:underline"
+            >
+              根据十月之水的喜好推荐
+            </h1>
+            <h2
+              class="pr-8 pt-4 text-xs text-lightest tracking-wider hover:underline mb-3"
+            >
+              查看全部
+            </h2>
+          </div>
+          <div class="w-full flex flex-wrap">
+            <div v-for="fory in forys" :key="fory.src" class="p-2 w-48 pl-7">
+              <div class="bg-light w-full h-auto p-5 rounded-lg shadow-md">
+                <img
+                  :src="`${fory.src}`"
+                  :alt="`${fory.title}-cover`"
+                  class="h-auto w-full shadow mb-2"
+                />
+                <h1
+                  class="w-full inline-block whitespace-nowrap truncate ... text-sm font-semibold text-white tracking-wide"
+                  :title="fory.title"
+                >
+                  {{ fory.title }}
+                </h1>
+                <h2
+                  class="w-full line-clamp-1 pb-4 text-xs text-lightest tracking-wide"
+                >
+                  {{ fory.artist }}
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- play bar -->
@@ -175,6 +250,20 @@
 </template>
 
 <script>
+import rec0 from "./assets/rec0.jpg";
+import rec1 from "./assets/rec1.jpg";
+import rec2 from "./assets/rec2.jpg";
+import rec3 from "./assets/rec4.jpg";
+import rec4 from "./assets/rec5.jpg";
+import rec5 from "./assets/rec3.jpg";
+
+import for0 from "./assets/for0.jpg";
+import for1 from "./assets/for1.jpg";
+import for2 from "./assets/for2.jpg";
+import for3 from "./assets/for3.jpg";
+import for4 from "./assets/for4.jpg";
+import for5 from "./assets/for5.jpg";
+
 export default {
   name: "App",
   data: function () {
@@ -185,8 +274,60 @@ export default {
         { id: "library", name: "资料库", icon: "bar_chart" },
       ],
       setID: "home",
-      albums: [{ name: "我的歌单" }, { name: "生命之光" }],
+      albums: [{ name: "我的歌单#1" }, { name: "生命之光" }],
       showDropdown: false,
+      recents: [
+        { src: rec0, title: "Daily Mix", artist: "By Spotify" },
+        { src: rec1, title: "孤独的人是可耻的", artist: "张楚" },
+        { src: rec2, title: "一无所有", artist: "崔健" },
+
+        { src: rec3, title: "只爱陌生人", artist: "王菲" },
+        {
+          src: rec4,
+          title: "The Dark Side of the Moon",
+          artist: "Pink Floyd",
+        },
+        {
+          src: rec5,
+          title: "In The Court Of The Crimson King",
+          artist: "King Crimson",
+        },
+      ],
+      forys: [
+        {
+          src: for0,
+          title: "今日推荐2",
+          artist: "腰樂隊、五條人、JADE EYES 等更多曲风",
+        },
+        {
+          src: for1,
+          title: "新歌雷达",
+          artist:
+            "捕捉你关注的艺人的最新音乐，以及为你推荐的最新单曲。每周五更新。",
+        },
+        {
+          src: for2,
+          title: "每周新发现",
+          artist:
+            "你的每周新鲜音乐合辑。畅享符合你喜好的新音乐和精选辑。每周一更新。",
+        },
+
+        {
+          src: for3,
+          title: "今日推荐4",
+          artist: "Eason Chan、Faye Wong、Wakin Chau 等更多曲风",
+        },
+        {
+          src: for4,
+          title: "今日推荐5",
+          artist: "The Beatles、Camel、Pink Floyd 等更多曲风",
+        },
+        {
+          src: for5,
+          title: "今日推荐3",
+          artist: "Frank Zappa、King Crimson、Caravan 等更多曲风",
+        },
+      ],
     };
   },
   components: {},
