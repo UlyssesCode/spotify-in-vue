@@ -185,8 +185,17 @@
             <div
               v-for="recent in recents"
               :key="recent.src"
-              class="p-2 w-48 pl-7"
+              class="p-2 w-48 pl-7 relative"
             >
+              <div
+                class="absolute w-full h-full flex items-end justify-end p-10 pb-6 opacity-0 hover:opacity-100 hover:pb-8 transition-all duration-300"
+              >
+                <div
+                  class="bg-green rounded-full h-10 w-10 flex items-center justify-center"
+                >
+                  <i class="material-icons text-4xl">play_arrow</i>
+                </div>
+              </div>
               <div class="bg-light w-full h-auto p-5 rounded-lg shadow-md">
                 <img
                   :src="`${recent.src}`"
@@ -199,7 +208,10 @@
                 >
                   {{ recent.title }}
                 </h1>
-                <h2 class="pb-4 text-xs text-lightest tracking-wide">
+                <h2
+                  class="pb-4 text-xs text-lightest tracking-wide"
+                  :title="recent.artist"
+                >
                   {{ recent.artist }}
                 </h2>
               </div>
@@ -220,7 +232,20 @@
             </h2>
           </div>
           <div class="w-full flex flex-wrap">
-            <div v-for="fory in forys" :key="fory.src" class="p-2 w-48 pl-7">
+            <div
+              v-for="fory in forys"
+              :key="fory.src"
+              class="p-2 w-48 pl-7 relative"
+            >
+              <div
+                class="absolute w-full h-full flex items-end justify-end p-10 pb-6 opacity-0 hover:opacity-100 hover:pb-8 transition-all duration-300"
+              >
+                <div
+                  class="bg-green rounded-full h-10 w-10 flex items-center justify-center"
+                >
+                  <i class="material-icons text-4xl">play_arrow</i>
+                </div>
+              </div>
               <div class="bg-light w-full h-auto p-5 rounded-lg shadow-md">
                 <img
                   :src="`${fory.src}`"
@@ -235,8 +260,59 @@
                 </h1>
                 <h2
                   class="w-full line-clamp-1 pb-4 text-xs text-lightest tracking-wide"
+                  :title="fory.artist"
                 >
                   {{ fory.artist }}
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="px-6 py-3 flex justify-between items-center">
+            <h1
+              class="pl-2 text-2xl font-semibold text-white tracking-wider hover:underline"
+            >
+              回味无穷
+            </h1>
+            <h2
+              class="pr-8 pt-4 text-xs text-lightest tracking-wider hover:underline mb-3"
+            >
+              查看全部
+            </h2>
+          </div>
+          <div class="w-full flex flex-wrap">
+            <div
+              v-for="cus in cuss"
+              :key="cus.src"
+              class="p-2 w-48 pl-7 relative"
+            >
+              <div
+                class="absolute w-full h-full flex items-end justify-end p-10 pb-6 opacity-0 hover:opacity-100 hover:pb-8 transition-all duration-300"
+              >
+                <div
+                  class="bg-green rounded-full h-10 w-10 flex items-center justify-center"
+                >
+                  <i class="material-icons text-4xl">play_arrow</i>
+                </div>
+              </div>
+              <div class="bg-light w-full h-auto p-5 rounded-lg shadow-md">
+                <img
+                  :src="`${cus.src}`"
+                  :alt="`${cus.title}-cover`"
+                  class="h-auto w-full shadow mb-2"
+                />
+                <h1
+                  class="w-full inline-block whitespace-nowrap truncate ... text-sm font-semibold text-white tracking-wide"
+                  :title="cus.title"
+                >
+                  {{ cus.title }}
+                </h1>
+                <h2
+                  class="w-full line-clamp-1 pb-4 text-xs text-lightest tracking-wide"
+                  :title="cus.artist"
+                >
+                  {{ cus.artist }}
                 </h2>
               </div>
             </div>
@@ -245,7 +321,16 @@
       </div>
     </div>
     <!-- play bar -->
-    <div class="w-full bg-light" style="height: 12vh"></div>
+    <div
+      class="w-full flex items-center justify-between bg-light"
+      style="height: 12vh"
+    >
+      <div class="flex items-center">
+        <div>
+          <h1>一个短篇 A Short Story</h1>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -263,6 +348,13 @@ import for2 from "./assets/for2.jpg";
 import for3 from "./assets/for3.jpg";
 import for4 from "./assets/for4.jpg";
 import for5 from "./assets/for5.jpg";
+
+import cus0 from "./assets/cus0.jpg";
+import cus1 from "./assets/cus1.jpg";
+import cus2 from "./assets/cus2.jpg";
+import cus3 from "./assets/cus3.jpg";
+import cus4 from "./assets/cus4.jpg";
+import cus5 from "./assets/cus5.jpg";
 
 export default {
   name: "App",
@@ -326,6 +418,40 @@ export default {
           src: for5,
           title: "今日推荐3",
           artist: "Frank Zappa、King Crimson、Caravan 等更多曲风",
+        },
+      ],
+      cuss: [
+        {
+          src: cus0,
+          title: "罗大佑 合辑",
+          artist: "窦唯、万能青年旅店、小虎队 等更多曲风",
+        },
+        {
+          src: cus1,
+          title: "当时的月亮 电台",
+          artist: "创建者：Spotify",
+        },
+        {
+          src: cus2,
+          title: "寸铁 电台",
+          artist: "创建者：Spotify",
+        },
+
+        {
+          src: cus3,
+          title: "野外合作社 合辑",
+          artist: "甜梅号、张楚、Joyside等更多曲风",
+        },
+        {
+          src: cus4,
+          title: "陈升 合辑",
+          artist: "声音碎片、腰乐队、伍佰 等更多曲风",
+        },
+        {
+          src: cus5,
+          title: "最爱MyLittleAirport",
+          artist:
+            "My Little Airport 嘅歌一直帶大家遊走香港，每張專輯盛載住呢個城市嘅變遷...",
         },
       ],
     };
