@@ -69,10 +69,10 @@ export default {
   },
   methods: {
     playSong() {
-      if (!this.pause) {
+      this.pause = this.pause === true ? false : true;
+      if (this.pause) {
         let audio = new Audio(song);
         audio.play();
-        this.pause = this.pause === true ? false : true;
       }
     },
   },
